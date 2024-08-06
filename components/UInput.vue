@@ -21,12 +21,19 @@ const emit = defineEmits([...inputEmits])
                     :placeholder="label"
                     :value="modelValue"
                     :disabled="disabled"
-                    @input="e => emit('update:modelValue', e.target.value)">
+                    @input="e => emit('update:modelValue', e.target.value)"
+                    :min="min"
+                    :max="max"
+                    :autofocus="focus"
+                    :tabindex="index"
+                >
                 <label v-if="label">{{ label }}</label>
             </slot>
         </div>
         <div class="text-small p-2" v-for="error in errors">{{ error }}</div>
-        <div class="text-small p-2" v-if="helpText && !errors.length">{{ helpText }}</div>
+        <slot name="helpText">
+            <div class="text-small p-2" v-if="helpText && !errors.length">{{ helpText }}</div>
+        </slot>
     </div>
 </template>
 
