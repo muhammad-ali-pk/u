@@ -14,7 +14,7 @@ export interface UModalProps {
     okOnly?: boolean,
     cancelOnly?: boolean,
     noFooter?: boolean,
-    size?: 'sm' | 'md' | 'lg' | 'xlg',
+    size?: 'sm' | 'md' | 'lg' | 'xlg' | 'page',
     bodyClass?: string,
     headerClass?: string,
     showCloseBtn: boolean,
@@ -122,6 +122,10 @@ function hideModal() {
 
     &.modal-xlg {
         width: 72rem;
+    }
+
+    &.modal-page {
+        width: 100%;
     }
 
     .close-modal-btn {
