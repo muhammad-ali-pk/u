@@ -19,6 +19,7 @@ export interface UModalProps {
     headerClass?: string,
     showCloseBtn: boolean,
     footerClass?: string,
+    noHeader?: boolean,
 }
 
 const p = withDefaults(defineProps<UModalProps>(), {
@@ -32,7 +33,8 @@ const p = withDefaults(defineProps<UModalProps>(), {
     okDisabled: false,
     okLoading: false,
     okOnly: false,
-    showCloseBtn: true
+    showCloseBtn: true,
+    noHeader: false,
 })
 
 const emit = defineEmits(['ok', 'cancel', 'update:modelValue'])
@@ -58,7 +60,7 @@ function hideModal() {
         <div class="apm-modal-parent all-center" v-show="modelValue">
             <transition name="slide-down">
                 <div v-if="modelValue" class="apm-modal shadow" :class="`modal-${size}`">
-                    <div class="apm-modal-header" :class="headerClass">
+                    <div class="apm-modal-header" :class="headerClass" v-if="!noHeader">
                         <slot name="header">
                             <h2 class="m-0">{{ title }}</h2>
                         </slot>
