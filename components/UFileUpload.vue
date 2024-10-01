@@ -81,6 +81,10 @@ function onDragLeave() {
 }
 
 const emit = defineEmits(['change'])
+
+defineExpose({
+    inputElement
+})
 </script>
 
 <template>
